@@ -136,6 +136,7 @@ export const Carousel = ({ user }) => {
           className="allBanner"
           ref={carouselRef}
           onMouseDown={handleMouseDown}
+          onTouchStart={handleMouseDown}
         >
           {user.map((data) =>
             data.pictures.map((datas, index) => banner(datas, index))
