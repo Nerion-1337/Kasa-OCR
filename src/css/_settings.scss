@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+body {
+    background: $C3;
+    transition: background 1s;
+    font-weight: 500;
+    padding: clamp(10px, 3.96vw, 57px) clamp(30px, 6.95vw, 100px) 0 clamp(30px, 6.95vw, 100px);
+    @extend %center;
+    //pointer-events:none;
+    //user-select:none;
+}
+body #root{
+    @extend %center;
+    flex-direction: column;
+}
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #000000;
+}
+
+a:visited {
+    color: transparent;
+}
+
+input{
+    outline: none;
+}
+
+body.modelight {
+    background: $fondS;
+    transition: background 1s;
+
+    li {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+        color: black;
+    }
+
+    a:visited {
+        color: black;
+    }
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+.loader p{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.2vw;
+    color: $C1;
+    font-weight: 900;
+    font-size: 60px;
+    font-weight: 300;
+    text-transform: uppercase;
+
+}
+
+.loader .bloc_load{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px;
+}
+
+.loader .load{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: $C2;
+    animation: animate 1s ease-in-out infinite;
+    @for $i from 1 through 12 {
+        &:nth-child(#{$i}) {
+            animation-delay: 0.2s * $i;
+        }
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}

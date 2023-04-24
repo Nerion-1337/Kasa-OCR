@@ -1,0 +1,622 @@
+header{
+    height: auto;
+    width: clamp(100px, 85vw, 1240px);
+    font-size: clamp(5px, calc((24 / 1240) * 100vw), 24px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include max-phone {
+        width: clamp(40px, calc((300 / 375) * 100vw), 300px);
+    }
+}
+
+header img{
+    width: clamp(50px, calc((210 / 1240) * 100vw), 210px);
+    @include max-phone {
+        width: clamp(20px, calc((145 / 375) * 100vw), 145px);
+    }
+}
+
+header nav ul{
+    display: flex;
+}
+
+header nav ul li{
+    width: clamp(30px, calc((145 / 1240) * 100vw), 145px);
+    @extend %center;
+    color: $C2;
+    font-weight: 500;
+    transition: letter-spacing 0.5s;    
+    &:hover{
+        letter-spacing: 0.1vw;
+    }
+    @include max-phone {
+        width: clamp(20px, calc((59 / 375) * 100vw), 59px);
+        font-size: clamp(5px, calc((10 / 375) * 100vw), 10px);
+        text-transform: uppercase ;
+        margin-top: clamp(5px, calc((10 / 375) * 100vw), 10px);
+    }
+}
+
+nav .active{
+    text-decoration: underline $C2;
+}
+
+//
+//
+// FOOTER
+//
+//
+
+footer{
+    background: black;
+    width: clamp(100px, 85vw, 1440px);
+    @extend %center;
+    flex-direction: column;
+    padding: clamp(10px, calc((66 / 1240) * 100vw), 66px) 0 clamp(10px, calc((29 / 1240) * 100vw), 29px) 0;
+    @include max-phone {
+        width: clamp(20px, calc((375 / 375) * 100vw), 375px);
+        height: clamp(10px, calc((209 / 375) * 100vw), 209px);
+    }
+}
+
+footer img{
+    width: clamp(30px, calc((122 / 1240) * 100vw), 122px);
+    @include max-phone {
+        width: clamp(20px, calc((122 / 375) * 100vw), 122px);
+    }
+}
+
+footer p{
+    color: white;
+    font-weight: 500;
+    font-size: clamp(5px, calc((24 / 1240) * 100vw), 24px);
+    margin-top: clamp(5px, calc((30 / 1240) * 100vw), 30px);
+    @include max-phone {
+        margin-top: clamp(5px, calc((30 / 375) * 100vw), 30px);
+        font-size: clamp(5px, calc((12 / 375) * 100vw), 12px);
+    }
+}
+
+//
+//
+// HOME
+//
+//
+
+.home{
+height: auto;
+@include max-phone {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+}
+
+.bannerHome{
+    width: clamp(100px, 85vw, 1240px);
+    height: clamp(50px, calc((223 / 1240) * 100vw), 223px);;
+    border-radius: clamp(1px, calc((25 / 1240) * 100vw), 25px);
+    overflow: hidden;
+    @extend %center;
+    margin-top: clamp(5px, calc((63 / 1240) * 100vw), 63px);
+    @include max-phone {
+        width: clamp(40px, calc((300 / 375) * 100vw), 300px);
+    }
+}
+
+.bannerHome img{
+    width: clamp(100px, 85vw, 1240px);
+    filter: brightness(70%);
+    @include max-phone {
+        width: clamp(20px, calc((420 / 375) * 100vw), 420px);
+    }
+}
+
+.home .bannerHome h1{
+    position: absolute;
+    color: white;
+    font-weight: 500;
+    font-size: clamp(5px, calc((48 / 1240) * 100vw), 48px);   
+    @include max-phone {
+        font-size: clamp(5px, calc((16 / 375) * 100vw), 16px);
+        width: clamp(40px, calc((217 / 375) * 100vw), 150px);
+        left: 56px;
+    }
+}
+
+.home .framework{
+    background: $C1;
+    width: clamp(100px, 85vw, 1240px);
+    height: auto;
+    margin: clamp(5px, calc((43 / 1240) * 100vw), 43px) 0;
+    border-radius: clamp(1px, calc((25 / 1240) * 100vw), 25px);
+    padding: clamp(8px, calc((56 / 1240) * 100vw), 56px) clamp(5px, calc((50 / 1240) * 100vw), 50px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: clamp(10px, calc((40 / 1240) * 100vw), 50px);
+    @include max-phone {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        background: transparent;
+    }
+}
+
+.home .framework a{
+    opacity: 0;
+    animation: animate 1s ease-in-out forwards;
+    @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+            animation-delay: 0.3s * $i;
+        }
+    }
+
+    @for $i from 7 through 20 {
+        &:nth-child(#{$i}) {
+            animation-delay: 0.2s * $i;
+        }
+    }
+}
+
+.home .framework a article{
+    width: clamp(40px, calc((300 / 1240) * 100vw), 340px);
+    height: clamp(40px, calc((300 / 1240) * 100vw), 340px);
+    border-radius: clamp(1px, calc((340 / 1240) * 100vw), 10px);
+    overflow: hidden;
+    transition: .5s;
+    &:hover{
+        transform: scale(1.12);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+        10px 10px 15px rgba(0, 0, 0, 0.35)
+        ;
+    }
+    @include max-phone {
+        width: clamp(40px, calc((300 / 375) * 100vw), 300px);
+        height: clamp(40px, calc((255 / 375) * 100vw), 255px);
+    }
+}
+
+
+.home .framework article figure{
+   position: relative;
+}
+
+.home .framework article figure img{
+    width: clamp(40px, calc((300 / 1240) * 100vw), 340px);
+    height: clamp(40px, calc((300 / 1240) * 100vw), 340px);
+    overflow: hidden;
+    @include max-phone {
+        width: clamp(40px, calc((300 / 375) * 100vw), 300px);
+        height: clamp(40px, calc((255 / 375) * 100vw), 255px);
+    }
+}
+
+.home .framework article figure figcaption{
+    position: absolute;
+color: white;
+font-size: clamp(8px, calc((18 / 1240) * 100vw), 18px);
+padding: clamp(5px, calc((20 / 1240) * 100vw), 20px);
+padding-top: clamp(40px, calc((150 / 1240) * 100vw), 150px);
+bottom: 0;
+left: 0;
+background: linear-gradient(0deg,rgba(0,0,0,.7) 10%,rgba(0,212,255,0) 70%);
+width: 100%;
+@include max-phone {
+    font-size: clamp(5px, calc((18 / 375) * 100vw), 18px);
+    padding: clamp(5px, calc((20 / 375) * 100vw), 20px);
+    padding-top: clamp(40px, calc((150 / 375) * 100vw), 150px);
+}
+}
+
+//
+//
+// HOUSING
+//
+//
+
+.housing{
+width: clamp(5px, calc((1240 / 1240) * 85vw), 1240px);
+height: clamp(5px, calc((930 / 1240) * 100vw), 930px);
+margin-top: clamp(5px, calc((20 / 1240) * 100vw), 20px);
+z-index: 10;
+@include max-phone {
+    height: clamp(5px, calc((700 / 375) * 100vw), 700px);
+    margin-top: clamp(5px, calc((27 / 375) * 100vw), 27px);
+} 
+}
+
+.housing .bannerHousing{
+    position: relative;
+    width: clamp(5px, calc((1240 / 1240) * 85vw), 1240px);
+    height: clamp(50px, calc((415 / 1240) * 100vw), 415px);
+    border-radius: clamp(1px, calc((25 / 1240) * 100vw), 25px);
+    overflow: hidden;
+    display: flex;
+    @include max-phone {
+        height: clamp(40px, calc((255 / 375) * 100vw), 255px);
+        border-radius: clamp(1px, calc((10 / 375) * 100vw), 10px);
+    }
+}
+
+.housing .bannerHousing .allBanner{
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    overflow: hidden;
+   }
+
+
+.housing .bannerHousing .allBanner img{
+    width: clamp(5px, calc((1240 / 1240) * 85vw), 1240px);
+    @include max-phone {
+        height: clamp(40px, calc((265 / 375) * 100vw), 265px);
+    }
+}
+
+.housing .bannerHousing .slideShow{
+    position: absolute;
+    z-index: 2;
+    color: white;
+    left: 50%;
+    bottom: clamp(5px, calc((24.92 / 1240) * 100vw), 24.92px);
+    font-size: clamp(5px, calc((18 / 1240) * 100vw), 18px);
+   }
+
+.housing .bannerHousing .btn img{
+    position: absolute;
+    width: clamp(5px, calc((79.2 / 1240) * 100vw), 79.2px);
+    height: clamp(50px, calc((46.68 / 1240) * 100vw), 46.68px);
+    @include max-phone {
+        top: 45%;
+    }
+}
+
+.housing .bannerHousing .btn_Right img{
+ right: 0;
+ transform: rotate(90deg);
+ z-index: 2;
+ @include max-phone {
+    right: 4px;
+}
+}
+
+.housing .bannerHousing .btn_Left img{
+    left: 0;
+    transform: rotate(-90deg);
+    z-index: 2;
+    @include max-phone {
+        left: 4px;
+    }
+   }
+
+
+.housing .card{
+ color: $C2;
+ margin: clamp(5px, calc((30 / 1240) * 100vw), 30px) 0;
+ @include max-phone {
+    margin: clamp(1px, calc((15 / 375) * 100vw), 15px) 0;
+    position: relative;
+}
+}
+.housing .card .titleName{
+    display: flex;
+    justify-content: space-between;
+   }
+
+.housing .card .titleLocation h1{
+    font-weight: 500;
+    font-size: clamp(5px, calc((36 / 1240) * 90vw), 36px);
+    line-height: 142.6%;
+    @include max-phone {
+        font-size: clamp(5px, calc((18 / 375) * 90vw), 18px);
+        margin-bottom: clamp(1px, calc((5 / 375) * 90vw), 5px);
+    }
+}
+
+.housing .card .titleLocation span{
+    font-weight: 500;
+    font-size: clamp(5px, calc((18 / 1240) * 100vw), 18px);
+    line-height: 142.6%;
+    @include max-phone {
+        font-size: clamp(5px, calc((14 / 375) * 90vw), 14px);
+    }
+}
+
+.housing .card .namePicture{
+    @extend %center;
+    @include max-phone {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+   }
+
+.housing .card .namePicture .name{
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ margin-right: clamp(5px, calc((10 / 1240) * 100vw), 10px);
+ @include max-phone {
+    margin-right: clamp(5px, calc((10 / 375) * 100vw), 10px);
+}
+}
+
+.housing .card .namePicture .name span{
+    font-weight: 500;
+    font-size: clamp(5px, calc((18 / 1240) * 100vw), 18px);
+    line-height: 142.6%;
+    @include max-phone {
+        font-size: clamp(5px, calc((12 / 375) * 100vw), 12px);
+    }
+}
+
+.housing .card .namePicture img{
+    width: clamp(5px, calc((64 / 1240) * 100vw), 64px);
+    height: clamp(5px, calc((64 / 1240) * 100vw), 64px);
+    border-radius: 50%;
+    @include max-phone {
+        width: clamp(5px, calc((32 / 375) * 100vw), 32px);
+        height: clamp(5px, calc((32 / 375) * 100vw), 32px);
+    }
+}
+
+.housing .card .tagRating{
+    margin-top: clamp(5px, calc((20 / 1240) * 100vw), 20px);
+    display: flex;
+    justify-content: space-between;
+    @include max-phone {
+        flex-direction: column;
+    }    
+}
+
+.housing .card .tagRating .allTag{
+  display: flex;
+  @include max-phone {
+    flex-wrap: wrap;
+    margin-bottom: clamp(1px, calc((27 / 375) * 100vw), 27px);
+}
+}
+
+.housing .card .tagRating .allTag .tag{
+    height: clamp(5px, calc((25 / 1240) * 100vw), 25px);
+    border-radius: clamp(5px, calc((10 / 1240) * 100vw), 10px);
+    background: $C2;
+    @extend %center;
+    margin-right: clamp(5px, calc((10 / 1240) * 100vw), 10px);
+    padding: 0 clamp(5px, calc((30 / 1240) * 100vw), 30px);
+    @include max-phone {
+        padding: 0 clamp(5px, calc((25 / 375) * 100vw), 25px);
+        height: clamp(5px, calc((18 / 375) * 100vw), 18px);
+        margin-bottom: clamp(1px, calc((5 / 375) * 100vw), 5px);
+    }
+}
+
+.housing .card .tagRating .allTag .tag span{
+    color: white;
+    font-size: clamp(5px, calc((14 / 1240) * 100vw), 14px);
+    font-weight: 500;
+        @include max-phone {
+        font-size: clamp(5px, calc((10 / 375) * 90vw), 10px);
+    }
+}
+
+.housing .card .tagRating .rating{
+   display: flex;
+   justify-content: space-between;
+   width: clamp(5px, calc((196 / 1240) * 100vw), 196px);  
+   @include max-phone {
+    width: clamp(5px, calc((98 / 375) * 100vw), 98px);  
+    margin-bottom: clamp(1px, calc((10 / 375) * 100vw), 10px);
+} 
+}
+
+.housing .card .tagRating .rating i{
+    @extend %center;
+    font-size: clamp(5px, calc((26 / 1240) * 100vw), 26px);
+    @include max-phone {
+        font-size: clamp(5px, calc((15 / 375) * 90vw), 15px);
+    }
+ }
+
+ .housing .card .tagRating .rating i[data-active=false]{
+    color: $C4;
+ }
+
+
+ .content{
+    display: flex;
+    gap: clamp(10px, calc((76 / 1240) * 100vw), 76px);
+    @include max-phone {
+        flex-direction: column;
+    }
+ }
+
+ .content article{
+    width: clamp(5px, calc((582 / 1240) * 100vw), 582px);
+    @include max-phone {
+        width: 100%;
+    }
+ }
+
+
+ .content article .collaps{
+    background: $C2;
+    height: clamp(5px, calc((52 / 1240) * 100vw), 52px);
+    border-radius: clamp(5px, calc((10 / 1240) * 100vw), 10px);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: clamp(5px, calc((20 / 1240) * 100vw), 20px);
+    padding-right: clamp(2px, calc((13 / 1240) * 100vw), 13px);
+    font-size: clamp(5px, calc((18 / 1240) * 100vw), 18px);
+    @include max-phone {
+        font-size: clamp(5px, calc((13 / 375) * 100vw), 13px);
+        height: clamp(5px, calc((30 / 375) * 100vw), 30px);
+        padding-left: clamp(5px, calc((11.5 / 375) * 100vw), 11.5px);
+        padding-right: clamp(2px, calc((7 / 375) * 100vw), 7px);
+    }
+ }
+
+.content article .collaps img{
+    width: clamp(5px, calc((24 / 1240) * 100vw), 24px);
+    height: clamp(5px, calc((13.71 / 1240) * 100vw), 13.71px);
+    transition: 0.5s;
+    transform: rotate(180deg);
+    @include max-phone {
+        width: clamp(5px, calc((16 / 375) * 100vw), 16px);
+        height: clamp(5px, calc((9 / 375) * 100vw), 9px);
+    } 
+ }
+.content article .collaps img.active{
+       transform: rotate(0deg); 
+    }
+
+.content article .collapsContent{
+    background: $C1;
+    height: 0px;
+    overflow: hidden;
+   transition: .5s;
+ }
+.content article .collapsContent.active{
+    height: clamp(5px, calc((250 / 1240) * 100vw), 250px);
+    @include max-phone {
+        height: clamp(5px, calc((143 / 375) * 100vw), 143px);
+    } 
+ }
+
+
+ .content article .collapsContent p{
+    background: $C1;
+    overflow: hidden;
+   padding: clamp(5px, calc((30 / 1240) * 100vw), 30px) clamp(5px, calc((12 / 1240) * 100vw), 12px) clamp(5px, calc((20 / 1240) * 100vw), 20px) clamp(5px, calc((20 / 1240) * 100vw), 20px);
+   color: $C2;
+   font-size: clamp(5px, calc((18 / 1240) * 100vw), 18px);
+   text-align: justify;
+   transition: .5s;
+   @include max-phone {
+    font-size: clamp(5px, calc((12 / 375) * 100vw), 12px);
+} 
+ }
+
+
+ .content article .collapsContent ul{
+    background: $C1;
+    overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   padding: clamp(5px, calc((30 / 1240) * 100vw), 30px) clamp(5px, calc((12 / 1240) * 100vw), 12px) clamp(5px, calc((20 / 1240) * 100vw), 20px) clamp(5px, calc((20 / 1240) * 100vw), 20px);
+   color: $C2;
+   font-size: clamp(5px, calc((18 / 1240) * 100vw), 18px);
+   text-align: justify;
+   transition: .5s;
+   line-height: 142.6%;
+      @include max-phone {
+    font-size: clamp(5px, calc((12 / 375) * 100vw), 12px);
+} 
+ }
+
+ //
+//
+// ABOUT
+//
+//
+
+ .about{
+   flex-direction: column;
+   gap: clamp(10px, calc((31 / 1240) * 100vw), 31px);
+   height: clamp(10px, calc((500 / 1240) * 100vw), 500px);
+   padding: clamp(8px, calc((31 / 1240) * 100vw), 31px) 0;
+   z-index: 10;
+   @include max-phone {
+    height: clamp(5px, calc((320 / 375) * 100vw), 320px);
+} 
+ }
+
+ .about article{
+    width: clamp(5px, calc((1023 / 1240) * 100vw), 1023px);
+    opacity: 0;
+    animation: animate 1s ease-in-out forwards;
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+            animation-delay: 0.3s * $i;
+        }
+    }
+ }
+
+ .about article .collapsContent.active{
+    height: clamp(5px, calc((150 / 1240) * 100vw), 150px);
+    @include max-phone {
+        height: clamp(5px, calc((150 / 375) * 100vw), 150px);
+    } 
+ }
+
+ @keyframes animate {
+    0% {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+//
+//
+// ERROR 404
+//
+//
+ .error{
+    height: clamp(5px, calc((850 / 1240) * 100vw), 850px);
+    @extend %center;
+    flex-direction: column;
+    color: $C2;
+    @include max-phone {
+        height: clamp(5px, calc((600 / 375) * 100vw), 600px);
+    } 
+ }
+ 
+ .error img{
+    @include max-phone {
+        width: clamp(5px, calc((198 / 375) * 100vw), 198px);
+    } 
+ }
+
+ .error h1{
+    margin-top: clamp(5px, calc((66 / 1240) * 100vw), 66px);
+    margin-bottom: clamp(5px, calc((182 / 1240) * 100vw), 182px);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    @include max-phone {
+        width: clamp(5px, calc((260 / 375) * 100vw), 260px);
+        font-size: clamp(5px, calc((18 / 375) * 100vw), 18px);
+        text-align: center;
+        visibility: hidden;
+        &:before{
+            content: "Oups! La page que";
+            display: block;
+            font-size: clamp(5px, calc((18 / 375) * 100vw), 18px);
+            visibility: visible;
+            margin-bottom: clamp(-25px, calc((-20 / 375) * 100vw), -20px);
+        }
+        &:after{
+            content: "vous demandez n'existe pas";
+            display: block;
+            font-size: clamp(5px, calc((18 / 375) * 100vw), 18px);
+            visibility: visible;  
+        }
+    } 
+ }
+
+ .error span{
+    color: $C2;
+    text-decoration: underline;
+    transition: .5s;
+    &:hover{
+        letter-spacing: 0.1vw;
+    }
+ }

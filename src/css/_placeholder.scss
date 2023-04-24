@@ -1,0 +1,21 @@
+// @extend %flexbox;
+%center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%fullwindow {
+    height: 100vh;
+    width: 100vw;
+}
+
+%visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+%invisible {
+    opacity: 0;
+    visibility: hidden;
+}
