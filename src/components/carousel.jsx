@@ -77,12 +77,15 @@ export const Carousel = ({ user }) => {
   });
   //
   //
-  // Scroll à l'utilisation de la sourie
+  // Scroll à l'utilisation de la sourie & tactil
   //
   //
   const handleMouseDown = (event) => {
-    event.preventDefault();
+    if (event.type === "mousedown") {
+      event.preventDefault();
+    }
     setIsSliding(true);
+    const allBanner = document.querySelector(".allBanner");
 
     // startX permet de stocker la position de départ horizontal du click
     const startX = event.pageX || event.touches[0].pageX;
@@ -105,6 +108,7 @@ export const Carousel = ({ user }) => {
 
     //s'execute lorsque le click n'est plus actif
     const handleMouseUp = () => {
+      //setIsSliding(false);
       const itemWidth = carouselRef.current.scrollWidth / totalImages;
 
       //calcule de l'index image la plus proche en divisant la position actuelle de défilement (scrollLeft) par la largeur de chaque item, puis en arrondissant le résultat à l'entier le plus proche
@@ -126,52 +130,16 @@ export const Carousel = ({ user }) => {
         //si mouvement sourie insuffisant
       }
       //remet à zero l'écouteur d'évènement
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      allBanner.removeEventListener("mousemove", handleMouseMove);
+      allBanner.removeEventListener("mouseup", handleMouseUp);
+      allBanner.addEventListener("touchmove", handleMouseMove);
+      allBanner.addEventListener("touchend", handleMouseUp);
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-  };
-  //
-  //
-  // Scroll à l'utilisation du tactile
-  //
-  //
-  const handleTouchStart = (event) => {
-    //event.preventDefault();
-    setIsSliding(true);
-    const startX = event.pageX || event.touches[0].pageX;
-    let scrollLeft = carouselRef.current.scrollLeft;
-    let currentX;
-
-    const handleTouchMove = (event) => {
-      const x = event.pageX || event.touches[0].pageX;
-      const walk = (x - startX) * 1;
-      carouselRef.current.scrollLeft = scrollLeft - walk;
-      currentX = x;
-    };
-
-    const handleTouchEnd = () => {
-      const itemWidth = carouselRef.current.scrollWidth / totalImages;
-      const newIndex =
-        Math.round(carouselRef.current.scrollLeft / itemWidth) || currentIndex;
-
-      if (currentX < startX && newIndex !== totalImages - 1) {
-        scrollToIndex(newIndex + 1);
-      } else if (currentX < startX && newIndex === totalImages - 1) {
-        scrollToIndex(0);
-      } else if (currentX > startX && newIndex !== 0) {
-        scrollToIndex(newIndex - 1);
-      } else if (currentX > startX && newIndex === 0) {
-        scrollToIndex(totalImages - 1);
-      }
-      document.addEventListener("touchmove", handleTouchMove);
-      document.addEventListener("touchend", handleTouchEnd);
-    };
-
-    document.addEventListener("touchmove", handleTouchMove);
-    document.addEventListener("touchend", handleTouchEnd);
+    allBanner.addEventListener("mousemove", handleMouseMove);
+    allBanner.addEventListener("mouseup", handleMouseUp);
+    allBanner.addEventListener("touchmove", handleMouseMove);
+    allBanner.addEventListener("touchend", handleMouseUp);
   };
   //
   //
@@ -195,7 +163,7 @@ export const Carousel = ({ user }) => {
           className="allBanner"
           ref={carouselRef}
           onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
+          onTouchStart={handleMouseDown}
         >
           {user.map((data) =>
             data.pictures.map((datas, index) => banner(datas, index))
