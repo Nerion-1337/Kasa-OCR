@@ -218,11 +218,11 @@ width: 100%;
 
 .housing{
 width: clamp(5px, calc((1240 / 1240) * 85vw), 1240px);
-height: clamp(5px, calc((930 / 1240) * 100vw), 930px);
+min-height: clamp(5px, calc((930 / 1240) * 100vw), 930px);
 margin-top: clamp(5px, calc((20 / 1240) * 100vw), 20px);
 z-index: 10;
 @include max-phone {
-    height: clamp(5px, calc((700 / 375) * 100vw), 700px);
+    min-height: clamp(5px, calc((700 / 375) * 100vw), 700px);
     margin-top: clamp(5px, calc((27 / 375) * 100vw), 27px);
 } 
 }
@@ -527,11 +527,11 @@ z-index: 10;
  .about{
    flex-direction: column;
    gap: clamp(10px, calc((31 / 1240) * 100vw), 31px);
-   height: clamp(10px, calc((500 / 1240) * 100vw), 500px);
+   min-height: clamp(10px, calc((500 / 1240) * 100vw), 500px);
    padding: clamp(8px, calc((31 / 1240) * 100vw), 31px) 0;
    z-index: 10;
    @include max-phone {
-    height: clamp(5px, calc((320 / 375) * 100vw), 320px);
+    min-height: clamp(5px, calc((320 / 375) * 100vw), 320px);
 } 
  }
 
