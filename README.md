@@ -2,7 +2,7 @@
 
 Project de formation chez OpenClassRoom.
 
-#Langage solicité:
+# Langage solicité:
 
 - HTML
 - CSS
