@@ -4,8 +4,6 @@ Project de formation chez OpenClassRoom.
 
 # Langage solicité
 
-- HTML
-- CSS
 - SASS
 - JS
 - REACT
