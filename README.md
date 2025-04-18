@@ -14,7 +14,7 @@ Project de formation chez OpenClassRoom.
 
 # Maquette
 
-[Canevas](https://www.figma.com/file/bAnXDNqRKCRRP8mY2gcb5p/UI-Design?node-id=4%3A1)
+[Figma](https://www.figma.com/file/bAnXDNqRKCRRP8mY2gcb5p/UI-Design?node-id=4%3A1)
 
 # Visiter
 
